@@ -189,6 +189,7 @@ const contenedorProductos = document.querySelector("#contenedor-productos")
 const botonesCategorias = document.querySelectorAll(".boton-categoria")
 const tituloPrincipal = document.querySelector("#titulo-principal")
 let botonesAgregar = document.querySelectorAll(".producto-agregar")
+const numerito = document.querySelector("#numerito")
 
 /* Creamos la función para cargar los productos. En ella vamos a recorrer el array "productos" con el método foreach. Nombramos a la variable con el singular del nombre del array (producto). Luego, en la ejecución de la función flecha, creamos un div (línea 194), le agregamos la clase "producto" (línea 195) y todo el resto a ese div (línea 196 a 203) */ 
 /* El parámetro de la función se agrega para poder elegir productos por categoría */
@@ -208,8 +209,11 @@ function cargarProductos(productosElegidos) {
         `
         contenedorProductos.append(div)
        })
+       actualizarBotonesAgregar()
+       /* Esta función creada en la línea 237 se llama dentro de la función "cargarProductos" para que, cada vez que se cargue un producto, se ejecute y se actualicen los botones AGREGAR */
 }
 cargarProductos(productos)
+/* Al llamar a esta función e crea la funcionalidad del botón AGREGAR */
 
 botonesCategorias.forEach(boton => {
     boton.addEventListener("click", (e) => {
@@ -221,6 +225,8 @@ botonesCategorias.forEach(boton => {
             const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id)
             tituloPrincipal.innerText = productoCategoria.categoria.nombre
 
+            /* El método "find" nos devuelve lo primero que coincida con lo que le pongamos adentro */
+
             const productoBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id)
             cargarProductos(productoBoton)
         } else {
@@ -230,3 +236,40 @@ botonesCategorias.forEach(boton => {
         /* Este condicional es para que cargue los productos por categorías cuando se cumple la condición, y cuando no se cumple vuelve a cargar todos los productos (con el botón correspondiente) */
     })
 })
+
+/* La función cargarProductos se ejecuta varias veces, incluso al recargar la página. También pasa cuando hacemos click en cualquiera de los botones de las categorías */
+
+function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".producto-agregar")
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito)
+    })
+    /* El método addEventlistener, es un escuchador que indica al navegador que esté atento a la interacción del usuario. En este caso, llama a la función agregarAlCarrito cuando el usuario hace click en alguno de los botones AGREGAR */
+}
+
+const productosEnCarrito = []
+/* Cada producto que agregue el usuario irá a un array, que obviamente arranca vacío */
+
+function agregarAlCarrito(e) {
+    const idBoton = e.currentTarget.id
+    const productoAgregado = productos.find(producto => producto.id === idBoton)
+
+    /* Ahora debemos chequear si el producto a agregar ya existe en el carrito. Si se cumple la condición que sume la cantidad y no lo agregue de nuevo, y sino que lo agregue al array (carrito) */
+    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton)
+        productosEnCarrito[index].cantidad++                
+    } else {
+        productoAgregado.cantidad = 1
+        productosEnCarrito.push(productoAgregado)
+    }  
+    actualizarNumerito()
+
+    /* Una vez que esté todo listo, debemos llevar todo al local storage. Para ello solo debemos guardar el array "productosEnCarrito" en el local storage y llevarlo a la página del carrito */
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito))
+}
+
+/* Creamos la función que va a modificar el numerito del carrito a medida que se agreguen productos. Esta será llamada cada vez que se agregue un producto, o sea, dentro de la funcion agregarAlCarrito */
+function actualizarNumerito() {
+    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0)
+    numerito.innerText = nuevoNumerito
+}
