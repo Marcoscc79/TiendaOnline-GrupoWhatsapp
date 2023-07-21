@@ -247,7 +247,17 @@ function actualizarBotonesAgregar() {
     /* El método addEventlistener, es un escuchador que indica al navegador que esté atento a la interacción del usuario. En este caso, llama a la función agregarAlCarrito cuando el usuario hace click en alguno de los botones AGREGAR */
 }
 
-const productosEnCarrito = []
+let productosEnCarrito
+
+// Si hay algo en este JSON.parse que estamos trayendo del locaStorage se igualará a el contenido de la variable "productosEnCarrito" y sino el array está vacío.
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito")
+
+if(productosEnCarritoLS) {
+    productosEnCarrito = JSON.parse(productosEnCarritoLS)
+    actualizarNumerito()
+} else {
+    productosEnCarrito = []
+} 
 /* Cada producto que agregue el usuario irá a un array, que obviamente arranca vacío */
 
 function agregarAlCarrito(e) {
