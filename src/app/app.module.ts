@@ -6,13 +6,23 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { CarritoComponent } from './pages/carrito/carrito.component';
+import { ErrorComponent } from './pages/error/error.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ProductosComponent
+    ProductosComponent,
+    CarritoComponent,
+    ErrorComponent,
+
+  
+    
   ],
   imports: [
     BrowserModule,

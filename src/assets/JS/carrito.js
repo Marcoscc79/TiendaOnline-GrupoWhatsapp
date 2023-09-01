@@ -1,5 +1,6 @@
 // Creamos la constante donde se cargarán los productos agregados al carrito de compras. Si vemos la consola observaremos que, gracias al localStorage, se muestra el contenido de carrito.html
-let productosEnCarrito = localStorage.getItem("productos-en-carrito")
+
+productosEnCarrito = localStorage.getItem("productos-en-carrito")
 productosEnCarrito = JSON.parse(productosEnCarrito)
 
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio")
@@ -26,7 +27,7 @@ function cargarProductosCarrito() {
             const div = document.createElement("div")
             div.classList.add("carrito-producto")
             div.innerHTML = `
-                <img class="carrito-producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+                <img class="carrito-producto-imagen" src="../../../assets/IMG/${producto.imagen}" alt="${producto.titulo}">
                 <div class="carrito-producto-titulo">
                     <small>Título</small>
                     <h3>${producto.titulo}</h3>
