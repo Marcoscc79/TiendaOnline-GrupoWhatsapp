@@ -1,0 +1,46 @@
+    <div class="wrapper">
+        <aside>
+            <header>
+                <h1 class="logo">TiendaOnline</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li>
+                        <a class="boton-menu boton-volver" href="#">
+                            <i class="bi bi-arrow-left-circle-fill"></i>Seguir comprando</a>
+                    </li>
+                    <li>
+                        <a class="boton-menu boton-carrito active" routerLink="carrito">
+                            <i class="bi bi-cart-fill"></i>Carrito</a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <p class="texto-footer">© 2023 Tienda Online MCC</p>
+            </footer>
+        </aside>
+        <main>
+            <h2 class="titulo-principal">Carrito</h2>
+            <div class="contenedor-carrito">
+                <p id="carrito-vacio" class="carrito-vacio">Tu carrito está vacío <i class="bi bi-emoji-frown-fill"></i></p>
+                <div id="carrito-productos" class="carrito-productos desactivada">
+                    <!-- Esto se completa en el JS -->
+                </div>
+                <div id="carrito-acciones" class="carrito-acciones desactivada">
+                    <div class="carrito-acciones-izquierda">
+                        <button id="carrito-acciones-vaciar" class="carrito-acciones-vaciar">VACIAR CARRITO</button>
+                    </div>
+                    <div class="carrito-acciones-derecha">
+                        <div class="carrito-acciones-total">
+                            <p>Total:</p>
+                            <p id="total">$3000</p>
+                        </div>
+                        <button id="carrito-acciones-comprar" class="carrito-acciones-comprar">COMPRAR AHORA</button>
+                    </div>
+                </div>
+                <p id="carrito-comprado" class="carrito-comprado desactivada">Muchas gracias por tu compra <i class="bi bi-emoji-laughing"></i></p>
+            </div>
+        </main>
+    </div>
+
+    

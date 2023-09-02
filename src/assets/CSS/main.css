@@ -29,6 +29,12 @@ a {
     text-decoration: none;
 }
 
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -46,14 +52,10 @@ aside {
     justify-content: space-between;
 }
 .logo {
-    font-weight: 400;
+    font-weight: 300;
     font-size: 1.3rem;
 }
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
+
 .boton-menu {
     background-color: transparent;
     border: 0;
@@ -119,6 +121,11 @@ aside {
     color: var(--clr-main-dark);
     font-size: .85rem;
     margin-right: .5rem;
+    vertical-align: bottom;
+    vertical-align: middle !important;
+    position: static;
+    
+    
 }
 main {
     background-color: var(--clr-white);

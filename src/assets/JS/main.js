@@ -1,10 +1,11 @@
+"use strict"
 // PRODUCTOS
 const productos = [
     // Abrigos
     {
         id: "abrigo-01",
         titulo: "Abrigo 01",
-        imagen: "./img/abrigos/01.jpg",
+        imagen: "Abrigos/01.jpg",
         categoria: {
             nombre: "Abrigos",
             id: "abrigos"
@@ -14,7 +15,7 @@ const productos = [
     {
         id: "abrigo-02",
         titulo: "Abrigo 02",
-        imagen: "./img/abrigos/02.jpg",
+        imagen: "Abrigos/02.jpg",
         categoria: {
             nombre: "Abrigos",
             id: "abrigos"
@@ -24,7 +25,7 @@ const productos = [
     {
         id: "abrigo-03",
         titulo: "Abrigo 03",
-        imagen: "./img/abrigos/03.jpg",
+        imagen: "Abrigos/03.jpg",
         categoria: {
             nombre: "Abrigos",
             id: "abrigos"
@@ -34,7 +35,7 @@ const productos = [
     {
         id: "abrigo-04",
         titulo: "Abrigo 04",
-        imagen: "./img/abrigos/04.jpg",
+        imagen: "Abrigos/04.jpg",
         categoria: {
             nombre: "Abrigos",
             id: "abrigos"
@@ -44,7 +45,7 @@ const productos = [
     {
         id: "abrigo-05",
         titulo: "Abrigo 05",
-        imagen: "./img/abrigos/05.jpg",
+        imagen: "Abrigos/05.jpg",
         categoria: {
             nombre: "Abrigos",
             id: "abrigos"
@@ -55,7 +56,7 @@ const productos = [
     {
         id: "camiseta-01",
         titulo: "Camiseta 01",
-        imagen: "./img/camisetas/01.jpg",
+        imagen: "Camisetas/01.jpg",
         categoria: {
             nombre: "Camisetas",
             id: "camisetas"
@@ -65,7 +66,7 @@ const productos = [
     {
         id: "camiseta-02",
         titulo: "Camiseta 02",
-        imagen: "./img/camisetas/02.jpg",
+        imagen: "Camisetas/02.jpg",
         categoria: {
             nombre: "Camisetas",
             id: "camisetas"
@@ -75,7 +76,7 @@ const productos = [
     {
         id: "camiseta-03",
         titulo: "Camiseta 03",
-        imagen: "./img/camisetas/03.jpg",
+        imagen: "Camisetas/03.jpg",
         categoria: {
             nombre: "Camisetas",
             id: "camisetas"
@@ -85,7 +86,7 @@ const productos = [
     {
         id: "camiseta-04",
         titulo: "Camiseta 04",
-        imagen: "./img/camisetas/04.jpg",
+        imagen: "Camisetas/04.jpg",
         categoria: {
             nombre: "Camisetas",
             id: "camisetas"
@@ -95,7 +96,7 @@ const productos = [
     {
         id: "camiseta-05",
         titulo: "Camiseta 05",
-        imagen: "./img/camisetas/05.jpg",
+        imagen: "Camisetas/05.jpg",
         categoria: {
             nombre: "Camisetas",
             id: "camisetas"
@@ -105,7 +106,7 @@ const productos = [
     {
         id: "camiseta-06",
         titulo: "Camiseta 06",
-        imagen: "./img/camisetas/06.jpg",
+        imagen: "Camisetas/06.jpg",
         categoria: {
             nombre: "Camisetas",
             id: "camisetas"
@@ -115,7 +116,7 @@ const productos = [
     {
         id: "camiseta-07",
         titulo: "Camiseta 07",
-        imagen: "./img/camisetas/07.jpg",
+        imagen: "Camisetas/07.jpg",
         categoria: {
             nombre: "Camisetas",
             id: "camisetas"
@@ -125,7 +126,7 @@ const productos = [
     {
         id: "camiseta-08",
         titulo: "Camiseta 08",
-        imagen: "./img/camisetas/08.jpg",
+        imagen: "Camisetas/08.jpg",
         categoria: {
             nombre: "Camisetas",
             id: "camisetas"
@@ -136,7 +137,7 @@ const productos = [
     {
         id: "pantalon-01",
         titulo: "Pantalón 01",
-        imagen: "./img/pantalones/01.jpg",
+        imagen: "Pantalones/01.jpg",
         categoria: {
             nombre: "Pantalones",
             id: "pantalones"
@@ -146,7 +147,7 @@ const productos = [
     {
         id: "pantalon-02",
         titulo: "Pantalón 02",
-        imagen: "./img/pantalones/02.jpg",
+        imagen: "Pantalones/02.jpg",
         categoria: {
             nombre: "Pantalones",
             id: "pantalones"
@@ -156,7 +157,7 @@ const productos = [
     {
         id: "pantalon-03",
         titulo: "Pantalón 03",
-        imagen: "./img/pantalones/03.jpg",
+        imagen: "Pantalones/03.jpg",
         categoria: {
             nombre: "Pantalones",
             id: "pantalones"
@@ -166,7 +167,7 @@ const productos = [
     {
         id: "pantalon-04",
         titulo: "Pantalón 04",
-        imagen: "./img/pantalones/04.jpg",
+        imagen: "Pantalones/04.jpg",
         categoria: {
             nombre: "Pantalones",
             id: "pantalones"
@@ -176,7 +177,7 @@ const productos = [
     {
         id: "pantalon-05",
         titulo: "Pantalón 05",
-        imagen: "./img/pantalones/05.jpg",
+        imagen: "Pantalones/05.jpg",
         categoria: {
             nombre: "Pantalones",
             id: "pantalones"
@@ -195,12 +196,12 @@ const numerito = document.querySelector("#numerito")
 /* El parámetro de la función se agrega para poder elegir productos por categoría */
 
 function cargarProductos(productosElegidos) {
-    contenedorProductos.innerHTML ="" /* Este se agrega para que, cada vez que se ejecute la función vacíe el contenedor */
+    contenedorProductos.innerHTML =""; /* Este se agrega para que, cada vez que se ejecute la función vacíe el contenedor */
     productosElegidos.forEach(producto => {
         const div = document.createElement("div")
         div.classList.add("producto")
         div.innerHTML = `
-        <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+        <img class="producto-imagen" src="../../../assets/IMG/${producto.imagen}" alt="${producto.titulo}">
         <div class="producto-detalles">
             <h3 class="producto-titulo">${producto.titulo}</h3>
             <p class="producto-precio">$${producto.precio}</p>
@@ -212,7 +213,9 @@ function cargarProductos(productosElegidos) {
        actualizarBotonesAgregar()
        /* Esta función creada en la línea 237 se llama dentro de la función "cargarProductos" para que, cada vez que se cargue un producto, se ejecute y se actualicen los botones AGREGAR */
 }
+
 cargarProductos(productos)
+    
 /* Al llamar a esta función e crea la funcionalidad del botón AGREGAR */
 
 botonesCategorias.forEach(boton => {
